@@ -167,6 +167,7 @@ struct ConvertHLOToLinalgOnTensorsPass
               return isa<mhlo::ReduceOp>(parentOp) ||
                      isa<mhlo::ReduceWindowOp>(parentOp);
             }));
+    target.addDynamicallyLegalOp<mhlo::DotGeneralOp>();
     // Let the rest fall through.
     target.markUnknownOpDynamicallyLegal([](Operation *) { return true; });
 
